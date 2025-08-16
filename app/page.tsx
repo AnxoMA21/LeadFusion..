@@ -1,11 +1,13 @@
 import { Check, LineChart, Rocket, Zap, Mail, Phone } from "lucide-react";
 import Button from "../components/Button";
+import ContactForm from "../components/ContactForm";
 
 export const revalidate = 60;
 
 export default function Page() {
   return (
     <main>
+      {/* NAV */}
       <header className="container flex items-center justify-between py-6">
         <a href="/" className="flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -21,6 +23,7 @@ export default function Page() {
         <Button href="#contacto">Agendar consultoría</Button>
       </header>
 
+      {/* HERO */}
       <section className="section">
         <div className="container grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
@@ -28,7 +31,8 @@ export default function Page() {
               Crece con <span className="bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">LeadFusion</span>: demanda predecible impulsada por IA
             </h1>
             <p className="mt-5 text-white/70">
-              Combinamos creatividad, datos e inteligencia artificial para generar leads calificados, optimizar ROAS y construir un motor de crecimiento 24/7.
+              Combinamos creatividad, datos e inteligencia artificial para generar leads calificados,
+              optimizar ROAS y construir un motor de crecimiento 24/7.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button href="#contacto">Quiero más leads</Button>
@@ -51,6 +55,7 @@ export default function Page() {
         </div>
       </section>
 
+      {/* SERVICIOS */}
       <section id="servicios" className="section bg-white/5">
         <div className="container">
           <h2 className="text-3xl font-semibold">Servicios</h2>
@@ -75,6 +80,7 @@ export default function Page() {
         </div>
       </section>
 
+      {/* PROCESO */}
       <section id="proceso" className="section">
         <div className="container">
           <h2 className="text-3xl font-semibold">Nuestro proceso</h2>
@@ -89,24 +95,26 @@ export default function Page() {
         </div>
       </section>
 
+      {/* CASOS */}
       <section id="casos" className="section bg-white/5">
         <div className="container">
           <h2 className="text-3xl font-semibold">Resultados</h2>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {[
-            ["Ecommerce moda", "+260% ventas / 90 días"],
-            ["Edtech B2C", "CPL -42% manteniendo volumen"],
-            ["SaaS B2B", "Pipeline x3 con lead scoring"]
-          ].map(([t, d]) => (
-            <div key={t} className="card p-6">
-              <div className="text-xl font-semibold">{t}</div>
-              <div className="mt-2 text-white/70">{d}</div>
-            </div>
-          ))}
-        </div>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {[
+              ["Ecommerce moda", "+260% ventas / 90 días"],
+              ["Edtech B2C", "CPL -42% manteniendo volumen"],
+              ["SaaS B2B", "Pipeline x3 con lead scoring"]
+            ].map(([t, d]) => (
+              <div key={t} className="card p-6">
+                <div className="text-xl font-semibold">{t}</div>
+                <div className="mt-2 text-white/70">{d}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* PRECIOS */}
       <section id="precios" className="section">
         <div className="container">
           <h2 className="text-3xl font-semibold">Planes</h2>
@@ -133,28 +141,26 @@ export default function Page() {
         </div>
       </section>
 
+      {/* CONTACTO */}
       <section id="contacto" className="section bg-white/5">
         <div className="container grid gap-10 md:grid-cols-2">
           <div>
             <h2 className="text-3xl font-semibold">Hablemos</h2>
-            <p className="mt-2 text-white/70">Agenda una consultoría gratuita de 20 minutos. Te mostramos oportunidades y un plan de acción.</p>
+            <p className="mt-2 text-white/70">
+              Agenda una consultoría gratuita de 20 minutos. Te mostramos oportunidades y un plan de acción.
+            </p>
             <div className="mt-6 space-y-2 text-white/80">
               <div className="flex items-center gap-2"><Mail className="h-5 w-5" /> hola@leadfusion.agency</div>
               <div className="flex items-center gap-2"><Phone className="h-5 w-5" /> +52 55 0000 0000</div>
             </div>
           </div>
-          <form className="card p-6" onSubmit={(e) => { e.preventDefault(); const f=e.currentTarget as HTMLFormElement; f.reset(); alert("¡Gracias! Te contactamos pronto."); }}>
-            <div className="grid gap-4">
-              <input required placeholder="Nombre" className="rounded-xl bg-white/10 px-4 py-3 outline-none placeholder:text-white/40" />
-              <input required type="email" placeholder="Email" className="rounded-xl bg-white/10 px-4 py-3 outline-none placeholder:text-white/40" />
-              <input placeholder="Sitio web / Instagram" className="rounded-xl bg-white/10 px-4 py-3 outline-none placeholder:text-white/40" />
-              <textarea placeholder="Cuéntanos tu objetivo" rows={4} className="rounded-xl bg-white/10 px-4 py-3 outline-none placeholder:text-white/40"></textarea>
-              <Button>Enviar</Button>
-            </div>
-          </form>
+
+          {/* Aquí antes estaba el <form />. Lo reemplazamos por el Client Component */}
+          <ContactForm />
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer className="container py-10 text-center text-white/60">
         © {new Date().getFullYear()} LeadFusion. Todos los derechos reservados.
       </footer>
@@ -166,7 +172,10 @@ function Item({ icon, title, desc }: { icon: React.ReactNode; title: string; des
   return (
     <div className="flex items-start gap-4 rounded-xl bg-white/5 p-4">
       <div className="rounded-lg bg-white/10 p-2">{icon}</div>
-      <div><div className="font-medium">{title}</div><div className="text-white/70 text-sm">{desc}</div></div>
+      <div>
+        <div className="font-medium">{title}</div>
+        <div className="text-white/70 text-sm">{desc}</div>
+      </div>
     </div>
   );
 }
