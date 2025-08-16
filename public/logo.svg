@@ -1,0 +1,11 @@
+<svg width="160" height="36" viewBox="0 0 160 36" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#60A5FA"/><stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <g><rect rx="6" width="36" height="36" fill="url(#g)"/>
+    <path d="M11 18h14M18 11v14" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="46" y="25" font-size="18" font-family="system-ui,Segoe UI,Inter" fill="white">LeadFusion</text>
+</svg>
